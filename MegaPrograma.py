@@ -10,9 +10,9 @@ listpass = ["1224" , "1234"]
 #Registrarse y Iniciar Sesion
 vueltatotal = 1
 while vueltatotal == 1:
-    rootmen = int(input("1=Registrarse\n2=Iniciar Secion\n"))
+    rootmen = int(input("1=Registrarse\n2=Iniciar Secion\n3=Cerrar Sistema\n"))
     if rootmen == 1:
-        vueltas = 0 
+        vueltas = 0
         while vueltas == 0:
             print("Registrar Usuario")
             regcor = input("Digte un Correo:")
@@ -85,20 +85,31 @@ while vueltatotal == 1:
                         print("Eliminar Usuario")
                         adm = 1
                     elif admin == 3:
-                        print("Mandar un correo de soporte")
-                        remitente = "luismorajimenez35@gmail.com"
-                        destinatario=input("Digite el correo al cual enviar el msj: ")
-                        mensaje = input("Digite el mensaje a enviar: ")
-                        email = EmailMessage()
-                        email["From"] = remitente
-                        email["To"] = destinatario
-                        email["Subject"] = "Correo se Soporte de Megaproyecto de Prime"
-                        email.set_content(mensaje)
-                        smtp = smtplib.SMTP_SSL("smtp.gmail.com")
-                        smtp.login(remitente, "fcvjqpolkfqrqnod")
-                        smtp.sendmail(remitente, destinatario, email.as_string())
-                        print("Correo enviado con exito")
-                        adm = 1
+                        rc = 3
+                        while rc == 3:
+                            print("Mandar un correo de soporte")
+                            remitente = "soportprimeprogram@gmail.com"
+                            destinatario=input("Digite el correo al cual enviar el msj: ")
+                            if "@" in destinatario and ".com" in destinatario:
+                                mensaje = input("Digite el mensaje a enviar: ")
+                                email = EmailMessage()
+                                email["From"] = remitente
+                                email["To"] = destinatario
+                                email["Subject"] = "Correo se Soporte de Megaproyecto de Prime"
+                                email.set_content(mensaje)
+                                smtp = smtplib.SMTP_SSL("smtp.gmail.com")
+                                smtp.login(remitente, "gbaabtuzmxgxrvhn")
+                                smtp.sendmail(remitente, destinatario, email.as_string())
+                                print("Correo enviado con exito")
+                                adm = 1
+                                rc = 1
+                            else:
+                                print("Digite un correo valido")
+                                rec = 3
+                    elif admin == 4:
+                        print("Volviendo al Sistema")
+                        adm = 2
+                        v= 3
                     elif admin > 3:
                         ah=int(input("\nOpcion Incorrecta\nDesea volver al menu de administracion?\n1=Si\n2=No\n"))
                         if ah==1:
@@ -111,29 +122,41 @@ while vueltatotal == 1:
                 print("Correo y password no encontrados ,le quedan",v,"intentos")
                 recover=input("Olvido su Contraseña?\nS=Si\nN=No\n ")
                 if recover == "S":
-                    codver = ['Y123', 'Q3456', 'IL24323', 'P353']
+                    codver = ['Y123L', 'Q3456R', 'IL24323', 'P353JU03', "IUTFDR0"]
                     for i in range(1):
                         ul=(random.choice(codver))
-                    remitente = "luismorajimenez35@gmail.com"
-                    destinatario= input("Digite el correo al que quiere que se le envie el soporte: ")
-                    mensaje = ("Digite este codigo para ver su contraseña anterior: "+ul)
-                    email = EmailMessage()
-                    email["From"] = remitente
-                    email["To"] = destinatario
-                    email["Subject"] = "Correo de Recuperacion de Contraseña"
-                    email.set_content(mensaje)
-                    smtp = smtplib.SMTP_SSL("smtp.gmail.com")
-                    smtp.login(remitente, "fcvjqpolkfqrqnod")
-                    smtp.sendmail(remitente, destinatario, email.as_string())
-                    print("Revise su bandeja de entrada")
-                    cod= input("Digite el codigo que se le envio a su bandeja de entrada: ")
-                    if cod == ul :
-                        print("Su contraseña anterior era :",regpass)
-                        v=3
-                    else:
-                        print("Fallo del codigo , volviendo al sistema de Bienvenida....\n")
-                        v=3
+                    pc = 3
+                    while pc == 3:
+                        remitente = "soportprimeprogram@gmail.com"
+                        destinatario= input("Digite el correo al que quiere que se le envie el soporte: ")
+                        if "@" in destinatario and ".com" in destinatario:
+                            mensaje = ("Digite este codigo para ver su contraseña anterior: "+ul)
+                            email = EmailMessage()
+                            email["From"] = remitente
+                            email["To"] = destinatario
+                            email["Subject"] = "Correo de Recuperacion de Contraseña"
+                            email.set_content(mensaje)
+                            smtp = smtplib.SMTP_SSL("smtp.gmail.com")
+                            smtp.login(remitente, "gbaabtuzmxgxrvhn")
+                            smtp.sendmail(remitente, destinatario, email.as_string())
+                            print("Revise su bandeja de entrada")
+                            cod= input("Digite el codigo que se le envio a su bandeja de entrada: ")
+                            if cod == ul :
+                                print("Su contraseña anterior era :",regpass)
+                                v=3
+                            else:
+                                print("Fallo del codigo , volviendo al sistema de Bienvenida....\n")
+                                v=3
+                        else:
+                            print("Digite un correo valido")
+                            pc = 3
                 else:
                     print("Volviendo al sistema")
-        print("Desmasiados intentos fallidos \nCerrando el sistema.....")
+    if rootmen == 3:
+        print("Cerrando Sistema\nGracias por su estadia")
         exit()
+    else:
+        print("Digite una opcion correcta")
+        vueltatotal = 1
+print("Desmasiados intentos fallidos \nCerrando el sistema.....")
+exit()
