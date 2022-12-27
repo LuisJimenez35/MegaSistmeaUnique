@@ -8,4 +8,8 @@ Se valido que exista un @ y terminacion .com a la hora de enviar un mensaje
 Primera Conexion a la base de datos Correcta
 (Python 3.11)
 
-
+20/12/22
+Version 1.9
+Se uso borra la password anterior al cambiarla por una nueva
+La conexion a la base se muestra de mejor manera
+(Python 3.11)
