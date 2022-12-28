@@ -1,4 +1,4 @@
-# Sistema Prime
+# Sistema Python 
 Un sistema escrito en Python que contiene funciones muy interesantes como conexiones a una base de datos , usar la api de gmail 
 
 30/11/22
